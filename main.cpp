@@ -6,6 +6,8 @@
 
 
 #include "TestScene.h"
+#include"GameScene.h"
+
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
@@ -17,6 +19,10 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
   scene->RegisterScene<TestScene>("TestScene");
   scene->ChangeScene("TestScene");
+
+  
+  scene->RegisterScene<GameScene>("GameScene");
+  scene->ChangeScene("GameScene");
 
   while (win->WinMsg()) {
 
