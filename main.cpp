@@ -5,6 +5,8 @@
 #pragma comment(lib, "Engine.lib")
 
 
+#include "TestScene.h"
+
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
   auto scene = CLEYERA::Manager::SceneManager::GetInstance();
@@ -13,9 +15,12 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
   std::unique_ptr<Engine> engine_ = std::make_unique<Engine>();
   engine_->Init();
 
+  scene->RegisterScene<TestScene>("TestScene");
+  scene->ChangeScene("TestScene");
+
   while (win->WinMsg()) {
 
-    //engine_->Run();
+    engine_->Run();
   }
   engine_->Finalize();
 

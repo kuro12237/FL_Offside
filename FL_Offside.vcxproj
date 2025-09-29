@@ -106,7 +106,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)Externals\Engine\Include\CLEYERA\;$(ProjectDir)Externals\Math\Include\;$(ProjectDir)Externals\ImGui\include\;$(ProjectDir)Externals\DirectXTex\include\;$(ProjectDir)Externals\nlohmann\;$(ProjectDir)Externals\assimp\include\;$(ProjectDir)Externals\LuaAssets\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Externals\Engine\Include\CLEYERA\;$(ProjectDir)Externals\Math\Include\;$(ProjectDir)Externals\ImGui\include\;$(ProjectDir)Externals\DirectXTex\include\;$(ProjectDir)Externals\nlohmann\;$(ProjectDir)Externals\assimp\include\;$(ProjectDir)Externals\LuaAssets\;$(ProjectDir)src/GameObject/;$(ProjectDir)src/Scene/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
     </ClCompile>
@@ -134,6 +134,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\GameObject\TestObject\TestCamera.cpp" />
+    <ClCompile Include="src\GameObject\TestObject\TestLight.cpp" />
+    <ClCompile Include="src\GameObject\TestObject\TestObject.cpp" />
+    <ClCompile Include="src\Scene\TestScene.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\GameObject\TestObject\TestCamera.h" />
+    <ClInclude Include="src\GameObject\TestObject\TestLight.h" />
+    <ClInclude Include="src\GameObject\TestObject\TestObject.h" />
+    <ClInclude Include="src\Scene\TestScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
