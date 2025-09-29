@@ -114,7 +114,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>assimp-vc143.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ProjectDir)Externals/DirectXTex/lib/Debug/;$(ProjectDir)Externals/ImGui/lib/Debug/;$(ProjectDir)Externals/Engine/lib/Debug/;$(ProjectDir)Externals/Math/lib/Debug/;$(ProjectDir)Externals\assimp\lib\Debug\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ProjectDir)Externals/DirectXTex/lib/Debug/;$(ProjectDir)Externals/ImGui/lib/Debug/;$(ProjectDir)Externals/Engine/lib/Debug/;$(ProjectDir)Externals/Math/lib/Debug/;$(ProjectDir)Externals/assimp/lib/Debug/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
