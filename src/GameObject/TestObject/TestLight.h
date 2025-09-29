@@ -1,5 +1,6 @@
 #pragma once
 #include "CLEYERA.h"
+#include"Compornent/PointLightComponent.h"
 
 class TestPointLight : public CLEYERA::Component::PointLightComponent {
 public:

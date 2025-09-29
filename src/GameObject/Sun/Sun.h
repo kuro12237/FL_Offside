@@ -1,6 +1,8 @@
 #pragma once
 #include"CLEYERA.h"
 
+#include"Compornent/PointLightComponent.h"
+
 class Sun :public CLEYERA::Component::PointLightComponent{
 public:
   Sun() {};
