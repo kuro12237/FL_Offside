@@ -7,7 +7,7 @@ set "CURDIR=%cd%"
 
 
 :: Run_ALL.bat を実行
-:: call "../Engine\Bat\Run_ALL.bat"
+call "../Engine\Bat\Run_ALL.bat"
 
 pause
 
