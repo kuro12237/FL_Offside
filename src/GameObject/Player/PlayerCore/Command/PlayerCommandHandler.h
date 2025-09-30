@@ -3,6 +3,7 @@
 #include "IPlayerCommand.h"
 
 #include "PlayerCommandMove.h"
+#include "PlayerJumpCommand.h"
 
 class PlayerCommandHandler {
 public:

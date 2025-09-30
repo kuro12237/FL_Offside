@@ -138,6 +138,7 @@
     <ClCompile Include="src\GameObject\Player\Camera\PlayerCamera.cpp" />
     <ClCompile Include="src\GameObject\Player\PlayerCore\Command\PlayerCommandHandler.cpp" />
     <ClCompile Include="src\GameObject\Player\PlayerCore\Command\PlayerCommandMove.cpp" />
+    <ClCompile Include="src\GameObject\Player\PlayerCore\Command\PlayerJumpCommand.cpp" />
     <ClCompile Include="src\GameObject\Player\PlayerCore\PlayerCore.cpp" />
     <ClCompile Include="src\GameObject\Player\PlayerManager.cpp" />
     <ClCompile Include="src\GameObject\Sun\Sun.cpp" />
@@ -154,6 +155,7 @@
     <ClInclude Include="src\GameObject\Player\PlayerCore\Command\IPlayerCommand.h" />
     <ClInclude Include="src\GameObject\Player\PlayerCore\Command\PlayerCommandHandler.h" />
     <ClInclude Include="src\GameObject\Player\PlayerCore\Command\PlayerCommandMove.h" />
+    <ClInclude Include="src\GameObject\Player\PlayerCore\Command\PlayerJumpCommand.h" />
     <ClInclude Include="src\GameObject\Player\PlayerCore\PlayerCore.h" />
     <ClInclude Include="src\GameObject\Player\PlayerCore\state\PlayerCoreStateBase.h" />
     <ClInclude Include="src\GameObject\Player\PlayerManager.h" />

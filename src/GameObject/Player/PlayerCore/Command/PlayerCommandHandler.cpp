@@ -22,4 +22,8 @@ void PlayerCommandHandler::InputCheckCommand() {
 
     commands_.push(std::make_unique<PlayerCommandMove>());
   }
+  if (input->PushBottonPressed(XINPUT_GAMEPAD_A)) {
+
+    commands_.push(std::make_unique<PlayerCommandJump>());
+  }
 }

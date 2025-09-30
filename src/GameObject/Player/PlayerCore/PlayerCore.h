@@ -22,6 +22,8 @@ public:
   /// </summary>
   void MoveCommand();
 
+  void JumpCommand();
+
 #pragma endregion
 
 private:
