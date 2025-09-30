@@ -14,7 +14,7 @@ void PlayerCore::Init() {
       GetCollider().lock());
   aabb->GetAABB_().max = {1.0f, 1.0f, 1.0f};
   aabb->GetAABB_().min = {-1.0f, -2.0f, -1.0f};
-  terrainY_ = 1.0f;
+  //terrainY_ = 1.0f;
 
 }
 

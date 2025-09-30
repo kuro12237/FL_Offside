@@ -1,8 +1,9 @@
 #include "CLEYERA.h"
+
+#pragma comment(lib, "Engine.lib")
 #pragma comment(lib, "math.lib")
 #pragma comment(lib, "imgui.lib")
 #pragma comment(lib, "DirectXTex.lib")
-#pragma comment(lib, "Engine.lib")
 
 
 #include "TestScene.h"
