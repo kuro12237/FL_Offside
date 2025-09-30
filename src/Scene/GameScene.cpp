@@ -13,9 +13,17 @@ void GameScene::Init() {
   player_->Init();
 
   loader_->SettingData();
+
+  uint32_t model = CLEYERA::Manager::ModelManager::GetInstance()->LoadModel("Resources/Model/system/Terrain/","Terrain");
+
+  auto terrain = CLEYERA::Manager::Terrain::GetInstance();
+  terrain->Init();
+  terrain->ChengeData(model);
 }
 
 void GameScene::Update(CLEYERA::Manager::SceneManager *ins) {
   player_->Update();
   sun_->Update();
+  auto obj = CLEYERA::Manager::ObjectManager::GetInstance();
+
 }

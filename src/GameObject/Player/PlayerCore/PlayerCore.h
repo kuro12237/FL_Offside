@@ -1,0 +1,29 @@
+#pragma once
+#include "../Base/IPlayer.h"
+#include "CLEYERA.h"
+
+#include "Command/IPlayerCommand.h"
+
+class PlayerCore : public IPlayer {
+public:
+  PlayerCore() {};
+  ~PlayerCore() {};
+
+  void Init() override;
+
+  void Update() override;
+
+  void OnCollision(std::weak_ptr<CLEYERA::Component::ObjectComponent>other);
+
+#pragma region Command
+
+  /// <summary>
+  /// 移動コマンド
+  /// </summary>
+  void MoveCommand();
+
+#pragma endregion
+
+private:
+  float speed_ = 0.1f;
+};

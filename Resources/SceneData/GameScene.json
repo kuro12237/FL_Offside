@@ -45,9 +45,9 @@
         },
         {
             "type": "MESH",
-            "name": "Player",
+            "name": "PlayerCore",
             "file_name": "PlayerCore",
-            "Directory_name": "Resources/Model/Player/PlayerCore",
+            "Directory_name": "Resources/Model/Player/PlayerCore/",
             "ModelFileType": "obj",
             "DrawType": "Instancing",
             "InstancingObjName": "Map",
@@ -67,9 +67,7 @@
                     1.0,
                     1.0
                 ]
-            },
-            "gravity_Flag": false,
-            "terrain_Flag": false
+            }
         }
     ]
 }

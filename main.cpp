@@ -18,7 +18,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
   engine_->Init();
 
   scene->RegisterScene<TestScene>("TestScene");
-  scene->ChangeScene("TestScene");
+  //scene->ChangeScene("TestScene");
 
   
   scene->RegisterScene<GameScene>("GameScene");
