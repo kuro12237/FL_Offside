@@ -135,6 +135,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\GameObject\Block\Base\BlockBase.cpp" />
+    <ClCompile Include="src\GameObject\Block\BlockManager.cpp" />
+    <ClCompile Include="src\GameObject\Block\DFBlock\NormalBlock.cpp" />
     <ClCompile Include="src\GameObject\Player\Camera\PlayerCamera.cpp" />
     <ClCompile Include="src\GameObject\Player\PlayerCore\Command\PlayerCommandHandler.cpp" />
     <ClCompile Include="src\GameObject\Player\PlayerCore\Command\PlayerCommandMove.cpp" />
@@ -150,6 +153,9 @@
     <ClCompile Include="src\Util\SceneLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameObject\Block\Base\BlockBase.h" />
+    <ClInclude Include="src\GameObject\Block\BlockManager.h" />
+    <ClInclude Include="src\GameObject\Block\DFBlock\NormalBlock.h" />
     <ClInclude Include="src\GameObject\Player\Base\IPlayer.h" />
     <ClInclude Include="src\GameObject\Player\Camera\PlayerCamera.h" />
     <ClInclude Include="src\GameObject\Player\PlayerCore\Command\IPlayerCommand.h" />

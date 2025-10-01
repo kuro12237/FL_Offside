@@ -4,6 +4,8 @@
 
 #include "Command/IPlayerCommand.h"
 
+#include"../../Block/DFBlock/NormalBlock.h"
+
 class PlayerCore : public IPlayer {
 public:
   PlayerCore() {};

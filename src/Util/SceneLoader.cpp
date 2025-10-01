@@ -120,6 +120,11 @@ SceneObjData SceneLoader::LoadobjData(nlohmann::json object, SceneObjData data,
   // object名前
   std::string objectName = object["name"].get<std::string>();
 
+
+  std::string categoryName = this->RemoveNumberSuffix(objectName);
+
+  categoryObjectSize_[categoryName]++;
+
   uint32_t modelHandle = 0;
 
   if (name != "") {

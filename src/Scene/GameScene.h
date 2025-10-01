@@ -6,6 +6,8 @@
 #include "Sun/Sun.h"
 #include"../Util/SceneLoader.h"
 
+#include"Block/BlockManager.h"
+
 class GameScene : public CLEYERA::Component::SceneComponent {
 public:
   GameScene() {};
@@ -17,6 +19,7 @@ public:
 private:
   std::unique_ptr<Sun> sun_ = nullptr;
   std::unique_ptr<PlayerManager> player_ = nullptr;
+  std::unique_ptr<BlockManager> blocks_ = nullptr;
 
   std::unique_ptr<SceneLoader> loader_ = nullptr;
 };

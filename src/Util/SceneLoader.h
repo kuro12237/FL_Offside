@@ -28,6 +28,10 @@ public:
 
   std::vector<std::weak_ptr<UtilGameObject>> SettingData();
 
+  size_t GetCategoryObjectSize(std::string category){
+    return categoryObjectSize_[category];
+  };
+
 private:
   SceneObjData LoadobjData(nlohmann::json object, SceneObjData data = {},
                            std::string name = "");
@@ -38,4 +42,5 @@ private:
   nlohmann::json deserialized = nullptr;
 
   std::map<std::string, SceneObjData> objDatas_;
+  std::map<std::string, size_t> categoryObjectSize_;
 };
