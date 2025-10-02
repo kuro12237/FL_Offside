@@ -29,5 +29,7 @@ public:
 #pragma endregion
 
 private:
+  std::queue<bool> hitDirection_;
+
   float speed_ = 0.1f;
 };

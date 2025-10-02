@@ -12,8 +12,8 @@ void PlayerCore::Init() {
 
   auto aabb = std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
       GetCollider().lock());
-  aabb->GetAABB_().max = {1.0f, 1.0f, 1.0f};
-  aabb->GetAABB_().min = {-1.0f, -1.0f, -1.0f};
+  aabb->GetAABB_().max = {1.0f, 2.0f, 1.0f};
+  aabb->GetAABB_().min = {-1.0f, -2.0f, -1.0f};
   terrainY_ = 1.0f;
 }
 
@@ -22,7 +22,7 @@ void PlayerCore::Update() {
       collider_);
   auto &aabb = c->GetAABB_();
   //aabb.min = scale_ * -1;
-  //aabb.max = scale_;
+
   this->TransformUpdate();
 }
 
@@ -37,10 +37,11 @@ void PlayerCore::OnCollision(
     auto aabb =
         std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
             obj->GetCollider().lock());
-
     // 押し出し
     this->translate_ += aabb->GetAABB().push;
     velocity_.y = 0.0f;
+    gameObject_->Update();
+
     return;
   }
 }
@@ -51,10 +52,10 @@ void PlayerCore::MoveCommand() {
 
   Math::Vector::Vec2 joy = input->JoyLPos();
 
-  translate_.x += joy.x * speed_;
+  force_.x = joy.x * speed_;
 }
 
 void PlayerCore::JumpCommand() {
 
-  force_.y = 1.0f;
+  force_.y = 1.5f;
 }
