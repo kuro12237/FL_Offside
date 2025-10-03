@@ -24,7 +24,7 @@ void GameScene::Init() {
 
   auto terrain = CLEYERA::Manager::Terrain::GetInstance();
   terrain->Init();
-  terrain->ChengeData(model);
+  //terrain->ChengeData(model);
 }
 
 void GameScene::Update(CLEYERA::Manager::SceneManager *ins) {

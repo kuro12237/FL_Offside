@@ -39,7 +39,18 @@ void PlayerCore::OnCollision(
             obj->GetCollider().lock());
     // 押し出し
     this->translate_ += aabb->GetAABB().push;
-    velocity_.y = 0.0f;
+    std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
+
+    while (!dir.empty()) {
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom) {
+        velocity_.y = 0.0f;
+      }
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
+        velocity_.y = 0.0f;
+      }
+      dir.pop();
+    }
+
     gameObject_->Update();
 
     return;
@@ -52,10 +63,12 @@ void PlayerCore::MoveCommand() {
 
   Math::Vector::Vec2 joy = input->JoyLPos();
 
-  force_.x = joy.x * speed_;
+
+    force_.x = joy.x * speed_;
+  
 }
 
 void PlayerCore::JumpCommand() {
 
-  force_.y = 1.5f;
+  force_.y = 1.0f;
 }
