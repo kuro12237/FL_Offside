@@ -107,8 +107,9 @@
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(ProjectDir)Externals\Engine\Include\CLEYERA\;$(ProjectDir)Externals\Math\Include\;$(ProjectDir)Externals\ImGui\include\;$(ProjectDir)Externals\DirectXTex\include\;$(ProjectDir)Externals\nlohmann\;$(ProjectDir)Externals\assimp\include\;$(ProjectDir)Externals\LuaAssets\;$(ProjectDir)src/GameObject/;$(ProjectDir)src/Scene/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp23</LanguageStandard>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -134,16 +135,44 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\GameObject\Block\Base\BlockBase.cpp" />
+    <ClCompile Include="src\GameObject\Block\BlockManager.cpp" />
+    <ClCompile Include="src\GameObject\Block\DFBlock\NormalBlock.cpp" />
+    <ClCompile Include="src\GameObject\Player\Camera\PlayerCamera.cpp" />
+    <ClCompile Include="src\GameObject\Player\PlayerCore\Command\PlayerCommandHandler.cpp" />
+    <ClCompile Include="src\GameObject\Player\PlayerCore\Command\PlayerCommandMove.cpp" />
+    <ClCompile Include="src\GameObject\Player\PlayerCore\Command\PlayerJumpCommand.cpp" />
+    <ClCompile Include="src\GameObject\Player\PlayerCore\PlayerCore.cpp" />
+    <ClCompile Include="src\GameObject\Player\PlayerManager.cpp" />
+    <ClCompile Include="src\GameObject\Sun\Sun.cpp" />
     <ClCompile Include="src\GameObject\TestObject\TestCamera.cpp" />
     <ClCompile Include="src\GameObject\TestObject\TestLight.cpp" />
     <ClCompile Include="src\GameObject\TestObject\TestObject.cpp" />
+    <ClCompile Include="src\Scene\GameScene.cpp" />
     <ClCompile Include="src\Scene\TestScene.cpp" />
+    <ClCompile Include="src\Util\SceneLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameObject\Block\Base\BlockBase.h" />
+    <ClInclude Include="src\GameObject\Block\BlockManager.h" />
+    <ClInclude Include="src\GameObject\Block\DFBlock\NormalBlock.h" />
+    <ClInclude Include="src\GameObject\Player\Base\IPlayer.h" />
+    <ClInclude Include="src\GameObject\Player\Camera\PlayerCamera.h" />
+    <ClInclude Include="src\GameObject\Player\PlayerCore\Command\IPlayerCommand.h" />
+    <ClInclude Include="src\GameObject\Player\PlayerCore\Command\PlayerCommandHandler.h" />
+    <ClInclude Include="src\GameObject\Player\PlayerCore\Command\PlayerCommandMove.h" />
+    <ClInclude Include="src\GameObject\Player\PlayerCore\Command\PlayerJumpCommand.h" />
+    <ClInclude Include="src\GameObject\Player\PlayerCore\PlayerCore.h" />
+    <ClInclude Include="src\GameObject\Player\PlayerCore\state\PlayerCoreStateBase.h" />
+    <ClInclude Include="src\GameObject\Player\PlayerManager.h" />
+    <ClInclude Include="src\GameObject\Sun\Sun.h" />
     <ClInclude Include="src\GameObject\TestObject\TestCamera.h" />
     <ClInclude Include="src\GameObject\TestObject\TestLight.h" />
     <ClInclude Include="src\GameObject\TestObject\TestObject.h" />
+    <ClInclude Include="src\GameObject\UtilGameObject\UtilGameObject.h" />
+    <ClInclude Include="src\Scene\GameScene.h" />
     <ClInclude Include="src\Scene\TestScene.h" />
+    <ClInclude Include="src\Util\SceneLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

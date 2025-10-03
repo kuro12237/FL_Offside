@@ -1,11 +1,14 @@
 #include "CLEYERA.h"
+
+#pragma comment(lib, "Engine.lib")
 #pragma comment(lib, "math.lib")
 #pragma comment(lib, "imgui.lib")
 #pragma comment(lib, "DirectXTex.lib")
-#pragma comment(lib, "Engine.lib")
 
 
 #include "TestScene.h"
+#include"GameScene.h"
+
 
 int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
@@ -16,7 +19,11 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
   engine_->Init();
 
   scene->RegisterScene<TestScene>("TestScene");
-  scene->ChangeScene("TestScene");
+  //scene->ChangeScene("TestScene");
+
+  
+  scene->RegisterScene<GameScene>("GameScene");
+  scene->ChangeScene("GameScene");
 
   while (win->WinMsg()) {
 
