@@ -21,7 +21,6 @@ void PlayerCore::Update() {
   auto c = std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
       collider_);
   auto &aabb = c->GetAABB_();
-  //aabb.min = scale_ * -1;
 
   this->TransformUpdate();
 }
@@ -63,12 +62,7 @@ void PlayerCore::MoveCommand() {
 
   Math::Vector::Vec2 joy = input->JoyLPos();
 
-
-    force_.x = joy.x * speed_;
-  
+  force_.x = joy.x * speed_;
 }
 
-void PlayerCore::JumpCommand() {
-
-  force_.y = 1.0f;
-}
+void PlayerCore::JumpCommand() { force_.y = 1.0f; }
