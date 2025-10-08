@@ -12,12 +12,23 @@ void GameScene::Init() {
   player_ = std::make_unique<PlayerManager>();
   player_->Init();
 
+    baggage_ = std::make_unique<BaggageManager>();
+  baggage_->SetGetCategorySizeFunc(
+      std::bind(&SceneLoader::GetCategoryObjectSize, loader_.get(),
+                std::placeholders::_1));
+  baggage_->Init();
   blocks_ = std::make_unique<BlockManager>();
   blocks_->SetGetCategorySizeFunc(std::bind(&SceneLoader::GetCategoryObjectSize,
                                             loader_.get(), std::placeholders::_1));
   blocks_->Init();
 
+
+
+  startHouse_ = objM->CreateObject<StartHouse>(VAR_NAME(StartHouse),
+                                               std::make_shared<StartHouse>());
   loader_->SettingData();
+
+  //player_->SetSpawnPlayerCore(startHouse_.lock()->GetTranslate());
 
   uint32_t model = CLEYERA::Manager::ModelManager::GetInstance()->LoadModel(
       "Resources/Model/Terrain/", "Terrain");

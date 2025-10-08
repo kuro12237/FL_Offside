@@ -13,6 +13,10 @@ public:
 
   void Update();
 
+  void SetSpawnPlayerCore(const Math::Vector::Vec3 &pos) {
+    core_.lock()->SetTranslate(pos);
+  }
+
 private:
   std::weak_ptr<PlayerCore> core_;
   std::unique_ptr<PlayerCamera> camera_ = nullptr;

@@ -47,7 +47,7 @@ template <typename T>
 inline void BlockManager::CreateBlock(BlockSizeData data) {
 
   for (size_t i = 0; i < static_cast<size_t>(data.size); i++) {
-    auto obj = objManager_->CreateObject<T>(data.name, std::make_shared<NormalBlock>());
+    auto obj = objManager_->CreateObject<T>(data.name, std::make_shared<T>());
     blocks_[data.name].push_back(obj);
   }
 }
