@@ -41,5 +41,5 @@ void GameScene::Init() {
 void GameScene::Update(CLEYERA::Manager::SceneManager *ins) {
   player_->Update();
   sun_->Update();
-  auto obj = CLEYERA::Manager::ObjectManager::GetInstance();
+  baggage_->Update();
 }

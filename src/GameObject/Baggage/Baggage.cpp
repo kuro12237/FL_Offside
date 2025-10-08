@@ -1,4 +1,5 @@
 #include "Baggage.h"
+#include "Player/PlayerManager.h"
 
 void Baggage::Init() {
   category_ = VAR_NAME(Baggage);
@@ -6,7 +7,7 @@ void Baggage::Init() {
   terrainY_ = 1.0f;
 
   CreateCollider(ColliderType::AABB);
-    // 当たり判定関数セット
+  // 当たり判定関数セット
   collider_->SetHitCallFunc([this](std::weak_ptr<ObjectComponent> other) {
     this->OnCollision(other);
   });
@@ -17,9 +18,8 @@ void Baggage::Init() {
   aabb->GetAABB_().min = {-1.0f, -1.0f, -1.0f};
 }
 
-void Baggage::Update() { 
-    
-    
+void Baggage::Update() {
+
   auto input = CLEYERA::Manager::InputManager::GetInstance();
 
   Math::Vector::Vec2 joy = input->JoyRPos();
@@ -27,9 +27,8 @@ void Baggage::Update() {
   force_.x = joy.x * 0.1f;
   force_.y = joy.y * 0.1f;
 
-
-    this->TransformUpdate(); }
-
+  this->TransformUpdate();
+}
 
 void Baggage::OnCollision(
     std::weak_ptr<CLEYERA::Component::ObjectComponent> other) {
@@ -44,6 +43,52 @@ void Baggage::OnCollision(
             obj->GetCollider().lock());
     // 押し出し
     this->translate_ -= aabb->GetAABB().push;
+    std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
+
+    while (!dir.empty()) {
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom) {
+        velocity_.y = 0.0f;
+      }
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
+        velocity_.y = 0.0f;
+      }
+      dir.pop();
+    }
+
+    gameObject_->Update();
+
+    return;
+  }
+  if (obj == std::dynamic_pointer_cast<PlayerCore>(obj)) {
+
+    auto aabb =
+        std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
+            obj->GetCollider().lock());
+    // 押し出し
+    this->translate_ -= aabb->GetAABB().push / 2.0f;
+    std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
+
+    while (!dir.empty()) {
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom) {
+        velocity_.y = 0.0f;
+      }
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
+        velocity_.y = 0.0f;
+      }
+      dir.pop();
+    }
+
+    gameObject_->Update();
+
+    return;
+  }
+  if (obj == std::dynamic_pointer_cast<Baggage>(obj)) {
+
+    auto aabb =
+        std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
+            obj->GetCollider().lock());
+    // 押し出し
+    this->translate_ -= aabb->GetAABB().push / 2.0f;
     std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
 
     while (!dir.empty()) {

@@ -1,5 +1,7 @@
 #include "PlayerCore.h"
 
+#include"Baggage/BaggageManager.h"
+
 void PlayerCore::Init() {
   category_ = VAR_NAME(PlayerCore);
 
@@ -35,6 +37,31 @@ void PlayerCore::OnCollision(
             obj->GetCollider().lock());
     // 押し出し
     this->translate_ += aabb->GetAABB().push;
+    std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
+
+    while (!dir.empty()) {
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom) {
+        velocity_.y = 0.0f;
+      }
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
+        velocity_.y = 0.0f;
+      }
+      dir.pop();
+    }
+
+    gameObject_->Update();
+
+    return;
+  }
+
+  
+  if (obj == std::dynamic_pointer_cast<Baggage>(obj)) {
+
+    auto aabb =
+        std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
+            obj->GetCollider().lock());
+    // 押し出し
+    this->translate_ += aabb->GetAABB().push / 2.0f;
     std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
 
     while (!dir.empty()) {
