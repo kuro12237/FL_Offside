@@ -42,7 +42,7 @@ void Baggage::OnCollision(
         std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
             obj->GetCollider().lock());
     // 押し出し
-    this->translate_ -= aabb->GetAABB().push;
+    this->translate_ += aabb->GetAABB().push;
     std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
 
     while (!dir.empty()) {
@@ -65,15 +65,18 @@ void Baggage::OnCollision(
         std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
             obj->GetCollider().lock());
     // 押し出し
-    this->translate_ -= aabb->GetAABB().push / 2.0f;
     std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
 
     while (!dir.empty()) {
       if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom) {
         velocity_.y = 0.0f;
-      }
-      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
+
+        this->translate_ += aabb->GetAABB().push;
+      }else if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
         velocity_.y = 0.0f;
+      } else {
+
+        this->translate_ += aabb->GetAABB().push;
       }
       dir.pop();
     }
@@ -88,7 +91,7 @@ void Baggage::OnCollision(
         std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
             obj->GetCollider().lock());
     // 押し出し
-    this->translate_ -= aabb->GetAABB().push / 2.0f;
+    this->translate_ += aabb->GetAABB().push;
     std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
 
     while (!dir.empty()) {

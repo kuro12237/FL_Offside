@@ -1,6 +1,6 @@
 #include "PlayerCore.h"
 
-#include"Baggage/BaggageManager.h"
+#include "Baggage/BaggageManager.h"
 
 void PlayerCore::Init() {
   category_ = VAR_NAME(PlayerCore);
@@ -20,6 +20,8 @@ void PlayerCore::Init() {
 }
 
 void PlayerCore::Update() {
+  this->isRightMove_ = false;
+  this->isLeftMove_ = false;
 
   this->TransformUpdate();
 }
@@ -30,52 +32,49 @@ void PlayerCore::OnCollision(
   if (!obj)
     return;
 
+  // ==============================
+  // NormalBlock（固定ブロック）
+  // ==============================
   if (obj == std::dynamic_pointer_cast<NormalBlock>(obj)) {
-
     auto aabb =
         std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
             obj->GetCollider().lock());
-    // 押し出し
-    this->translate_ += aabb->GetAABB().push;
-    std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
 
+    this->translate_ += aabb->GetAABB().push;
+
+    std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
     while (!dir.empty()) {
-      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom) {
-        velocity_.y = 0.0f;
-      }
-      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom ||
+          dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
         velocity_.y = 0.0f;
       }
       dir.pop();
     }
 
     gameObject_->Update();
-
     return;
   }
 
-  
+  // ==============================
+  // Baggage（押せるブロック）
+  // ==============================
   if (obj == std::dynamic_pointer_cast<Baggage>(obj)) {
-
     auto aabb =
         std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
             obj->GetCollider().lock());
-    // 押し出し
+    auto baggage = std::dynamic_pointer_cast<Baggage>(obj);
+
     this->translate_ += aabb->GetAABB().push / 2.0f;
     std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
-
     while (!dir.empty()) {
-      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom) {
-        velocity_.y = 0.0f;
-      }
-      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom ||
+          dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
         velocity_.y = 0.0f;
       }
       dir.pop();
     }
 
     gameObject_->Update();
-
     return;
   }
 }
@@ -83,10 +82,30 @@ void PlayerCore::OnCollision(
 void PlayerCore::MoveCommand() {
 
   auto input = CLEYERA::Manager::InputManager::GetInstance();
-
   Math::Vector::Vec2 joy = input->JoyLPos();
 
   force_.x = joy.x * speed_;
+
+  auto dir = hitDirection_;
+
+  while (!dir.empty()) {
+    if (dir.front() == CLEYERA::Util::Collider::HitDirection::Left) {
+
+      isRightMove_ = true;
+    }
+    if (dir.front() == CLEYERA::Util::Collider::HitDirection::Right) {
+
+      isLeftMove_ = true;
+    }
+    dir.pop();
+  }
+
+  if (joy.x > 0.0f && isRightMove_) {
+    force_.x = 0.0f;
+  }
+  if (joy.x < 0.0f && isLeftMove_) {
+    force_.x = 0.0f;
+  }
 }
 
 void PlayerCore::JumpCommand() { force_.y = 1.0f; }
