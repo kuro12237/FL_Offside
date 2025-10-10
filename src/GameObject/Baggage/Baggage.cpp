@@ -27,6 +27,7 @@ void Baggage::Update() {
   force_.x = joy.x * 0.1f;
   force_.y = joy.y * 0.1f;
 
+
   this->TransformUpdate();
 }
 
@@ -39,8 +40,9 @@ void Baggage::OnCollision(
   auto aabb = std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
       obj->GetCollider().lock());
 
-  //積み木
+  // 積み木
   if (obj == std::dynamic_pointer_cast<NormalBlock>(obj)) {
+    auto b = std::dynamic_pointer_cast<NormalBlock>(obj);
     // 押し出し
     this->translate_ += aabb->GetAABB().push;
     std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
@@ -52,6 +54,7 @@ void Baggage::OnCollision(
       if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
         velocity_.y = 0.0f;
       }
+
       dir.pop();
     }
 
@@ -59,11 +62,11 @@ void Baggage::OnCollision(
 
     return;
   }
+
   if (obj == std::dynamic_pointer_cast<PlayerCore>(obj)) {
-    // 押し出し
-    this->translate_ += aabb->GetAABB().push / 2.0f;
-    
-    //velo消す
+    auto p = std::dynamic_pointer_cast<PlayerCore>(obj);
+
+    // velo消す
     std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
     while (!dir.empty()) {
       if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom) {
@@ -72,11 +75,18 @@ void Baggage::OnCollision(
       if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
         velocity_.y = 0.0f;
       }
-      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Right) {
-        translate_.x -= obj->GetVelo().x;
-      }
-      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Left) {
-        translate_.x -= obj->GetVelo().x;
+
+      auto phitDir = p->GetHItDirections();
+
+      while (!phitDir.empty()) {
+
+        if (phitDir.front() == CLEYERA::Util::Collider::HitDirection::Right) {
+          translate_.x += obj->GetVelo().x;
+        }
+        if (phitDir.front() == CLEYERA::Util::Collider::HitDirection::Left) {
+          translate_.x += obj->GetVelo().x;
+        }
+        phitDir.pop();
       }
       dir.pop();
     }

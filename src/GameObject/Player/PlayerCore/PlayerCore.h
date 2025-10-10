@@ -30,6 +30,12 @@ public:
 
 #pragma endregion
 
+  #pragma region Get
+
+  const Math::Vector::Vec3 &GetConstVelo() const { return velocity_; }
+#pragma endregion
+
+
 private:
   bool isRightMove_ = false;
   bool isLeftMove_ = false;

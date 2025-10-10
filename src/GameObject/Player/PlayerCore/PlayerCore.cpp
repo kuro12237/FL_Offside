@@ -54,7 +54,7 @@ void PlayerCore::OnCollision(
   if (obj == std::dynamic_pointer_cast<Baggage>(obj)) {
     auto baggage = std::dynamic_pointer_cast<Baggage>(obj);
 
-    this->translate_ += aabb->GetAABB().push / 2.0f;
+    this->translate_ += aabb->GetAABB().push;
 
     std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
     // 上下に当たってる時velo0

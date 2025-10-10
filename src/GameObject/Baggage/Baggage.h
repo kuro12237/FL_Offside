@@ -1,11 +1,11 @@
 #pragma once
-#include"CLEYERA.h"
-#include"Block/DFBlock/NormalBlock.h"
+#include "Block/DFBlock/NormalBlock.h"
+#include "CLEYERA.h"
 
 /// <summary>
 /// 荷物
 /// </summary>
-class Baggage:public CLEYERA::Component::ObjectComponent {
+class Baggage : public CLEYERA::Component::ObjectComponent {
 public:
   Baggage() {};
   ~Baggage() {};
@@ -13,8 +13,7 @@ public:
   void Init() override;
   void Update() override;
 
-    void OnCollision(std::weak_ptr<CLEYERA::Component::ObjectComponent> other);
-
+  void OnCollision(std::weak_ptr<CLEYERA::Component::ObjectComponent> other);
 
 private:
 };
