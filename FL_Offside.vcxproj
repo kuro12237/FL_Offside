@@ -152,7 +152,9 @@
     <ClCompile Include="src\GameObject\TestObject\TestLight.cpp" />
     <ClCompile Include="src\GameObject\TestObject\TestObject.cpp" />
     <ClCompile Include="src\Scene\GameScene.cpp" />
+    <ClCompile Include="src\Scene\StageSelectScene.cpp" />
     <ClCompile Include="src\Scene\TestScene.cpp" />
+    <ClCompile Include="src\Scene\TitleScene.cpp" />
     <ClCompile Include="src\Util\SceneLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -177,7 +179,9 @@
     <ClInclude Include="src\GameObject\TestObject\TestObject.h" />
     <ClInclude Include="src\GameObject\UtilGameObject\UtilGameObject.h" />
     <ClInclude Include="src\Scene\GameScene.h" />
+    <ClInclude Include="src\Scene\StageSelectScene.h" />
     <ClInclude Include="src\Scene\TestScene.h" />
+    <ClInclude Include="src\Scene\TitleScene.h" />
     <ClInclude Include="src\Util\SceneLoader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
