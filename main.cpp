@@ -7,7 +7,7 @@
 
 
 #include "TestScene.h"
-#include "TitleScene.h"
+#include "Title/TitleScene.h"
 #include "StageSelectScene.h"
 #include"GameScene.h"
 
@@ -23,7 +23,7 @@ int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int) {
 
   scene->RegisterScene<TestScene>("TestScene");
   //scene->ChangeScene("TestScene");
-
+    
   scene->RegisterScene<StageSelectScene>("StageSelectScene");
   //scene->ChangeScene("StageSelectScene");
 
