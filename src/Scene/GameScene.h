@@ -7,6 +7,9 @@
 #include"../Util/SceneLoader.h"
 
 #include"Block/BlockManager.h"
+#include"Baggage/BaggageManager.h"
+
+#include"StartHouse/StartHouse.h"
 
 class GameScene : public CLEYERA::Component::SceneComponent {
 public:
@@ -20,6 +23,9 @@ private:
   std::unique_ptr<Sun> sun_ = nullptr;
   std::unique_ptr<PlayerManager> player_ = nullptr;
   std::unique_ptr<BlockManager> blocks_ = nullptr;
+  std::unique_ptr<BaggageManager> baggage_ = nullptr;
 
   std::unique_ptr<SceneLoader> loader_ = nullptr;
+  std::weak_ptr<StartHouse> startHouse_;
+
 };

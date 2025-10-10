@@ -4,7 +4,9 @@
 
 #include "Command/IPlayerCommand.h"
 
-#include"../../Block/DFBlock/NormalBlock.h"
+#include "../../Block/DFBlock/NormalBlock.h"
+
+class Baggage;
 
 class PlayerCore : public IPlayer {
 public:
@@ -15,7 +17,7 @@ public:
 
   void Update() override;
 
-  void OnCollision(std::weak_ptr<CLEYERA::Component::ObjectComponent>other);
+  void OnCollision(std::weak_ptr<CLEYERA::Component::ObjectComponent> other);
 
 #pragma region Command
 
@@ -29,6 +31,7 @@ public:
 #pragma endregion
 
 private:
-
+  bool isRightMove_ = false;
+  bool isLeftMove_ = false;
   float speed_ = 0.1f;
 };

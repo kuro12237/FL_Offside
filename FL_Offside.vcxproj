@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -135,6 +135,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\GameObject\Baggage\Baggage.cpp" />
+    <ClCompile Include="src\GameObject\Baggage\BaggageManager.cpp" />
     <ClCompile Include="src\GameObject\Block\Base\BlockBase.cpp" />
     <ClCompile Include="src\GameObject\Block\BlockManager.cpp" />
     <ClCompile Include="src\GameObject\Block\DFBlock\NormalBlock.cpp" />
@@ -144,6 +146,7 @@
     <ClCompile Include="src\GameObject\Player\PlayerCore\Command\PlayerJumpCommand.cpp" />
     <ClCompile Include="src\GameObject\Player\PlayerCore\PlayerCore.cpp" />
     <ClCompile Include="src\GameObject\Player\PlayerManager.cpp" />
+    <ClCompile Include="src\GameObject\StartHouse\StartHouse.cpp" />
     <ClCompile Include="src\GameObject\Sun\Sun.cpp" />
     <ClCompile Include="src\GameObject\TestObject\TestCamera.cpp" />
     <ClCompile Include="src\GameObject\TestObject\TestLight.cpp" />
@@ -153,6 +156,8 @@
     <ClCompile Include="src\Util\SceneLoader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\GameObject\Baggage\BaggageManager.h" />
+    <ClInclude Include="src\GameObject\Baggage\Baggage.h" />
     <ClInclude Include="src\GameObject\Block\Base\BlockBase.h" />
     <ClInclude Include="src\GameObject\Block\BlockManager.h" />
     <ClInclude Include="src\GameObject\Block\DFBlock\NormalBlock.h" />
@@ -165,6 +170,7 @@
     <ClInclude Include="src\GameObject\Player\PlayerCore\PlayerCore.h" />
     <ClInclude Include="src\GameObject\Player\PlayerCore\state\PlayerCoreStateBase.h" />
     <ClInclude Include="src\GameObject\Player\PlayerManager.h" />
+    <ClInclude Include="src\GameObject\StartHouse\StartHouse.h" />
     <ClInclude Include="src\GameObject\Sun\Sun.h" />
     <ClInclude Include="src\GameObject\TestObject\TestCamera.h" />
     <ClInclude Include="src\GameObject\TestObject\TestLight.h" />
