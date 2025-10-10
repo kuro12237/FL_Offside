@@ -36,11 +36,11 @@ void Baggage::OnCollision(
   if (!obj)
     return;
 
-  if (obj == std::dynamic_pointer_cast<NormalBlock>(obj)) {
+  auto aabb = std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
+      obj->GetCollider().lock());
 
-    auto aabb =
-        std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
-            obj->GetCollider().lock());
+  //積み木
+  if (obj == std::dynamic_pointer_cast<NormalBlock>(obj)) {
     // 押し出し
     this->translate_ += aabb->GetAABB().push;
     std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
@@ -60,27 +60,26 @@ void Baggage::OnCollision(
     return;
   }
   if (obj == std::dynamic_pointer_cast<PlayerCore>(obj)) {
-
-    auto aabb =
-        std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
-            obj->GetCollider().lock());
     // 押し出し
+    this->translate_ += aabb->GetAABB().push / 2.0f;
+    
+    //velo消す
     std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
-
     while (!dir.empty()) {
       if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom) {
         velocity_.y = 0.0f;
-
-        this->translate_ += aabb->GetAABB().push;
-      }else if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
+      }
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
         velocity_.y = 0.0f;
-      } else {
-
-        this->translate_ += aabb->GetAABB().push;
+      }
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Right) {
+        translate_.x -= obj->GetVelo().x;
+      }
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Left) {
+        translate_.x -= obj->GetVelo().x;
       }
       dir.pop();
     }
-
     gameObject_->Update();
 
     return;
@@ -97,9 +96,11 @@ void Baggage::OnCollision(
     while (!dir.empty()) {
       if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom) {
         velocity_.y = 0.0f;
+        this->translate_.y += aabb->GetAABB().push.y;
       }
       if (dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
         velocity_.y = 0.0f;
+        this->translate_.y += aabb->GetAABB().push.y;
       }
       dir.pop();
     }

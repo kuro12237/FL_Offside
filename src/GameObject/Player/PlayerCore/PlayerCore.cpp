@@ -20,8 +20,6 @@ void PlayerCore::Init() {
 }
 
 void PlayerCore::Update() {
-  this->isRightMove_ = false;
-  this->isLeftMove_ = false;
 
   this->TransformUpdate();
 }
@@ -31,14 +29,11 @@ void PlayerCore::OnCollision(
   auto obj = other.lock();
   if (!obj)
     return;
+  auto aabb = std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
+      obj->GetCollider().lock());
 
-  // ==============================
-  // NormalBlock（固定ブロック）
-  // ==============================
+  // 積み木
   if (obj == std::dynamic_pointer_cast<NormalBlock>(obj)) {
-    auto aabb =
-        std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
-            obj->GetCollider().lock());
 
     this->translate_ += aabb->GetAABB().push;
 
@@ -55,21 +50,22 @@ void PlayerCore::OnCollision(
     return;
   }
 
-  // ==============================
-  // Baggage（押せるブロック）
-  // ==============================
+  // 荷物
   if (obj == std::dynamic_pointer_cast<Baggage>(obj)) {
-    auto aabb =
-        std::dynamic_pointer_cast<CLEYERA::Util::Collider::AABBCollider>(
-            obj->GetCollider().lock());
     auto baggage = std::dynamic_pointer_cast<Baggage>(obj);
 
     this->translate_ += aabb->GetAABB().push / 2.0f;
+
     std::queue<CLEYERA::Util::Collider::HitDirection> dir = this->hitDirection_;
+    // 上下に当たってる時velo0
     while (!dir.empty()) {
       if (dir.front() == CLEYERA::Util::Collider::HitDirection::Bottom ||
           dir.front() == CLEYERA::Util::Collider::HitDirection::Top) {
         velocity_.y = 0.0f;
+      }
+      if (dir.front() == CLEYERA::Util::Collider::HitDirection::Left &&
+          dir.front() == CLEYERA::Util::Collider::HitDirection::Right) {
+ 
       }
       dir.pop();
     }
@@ -98,13 +94,6 @@ void PlayerCore::MoveCommand() {
       isLeftMove_ = true;
     }
     dir.pop();
-  }
-
-  if (joy.x > 0.0f && isRightMove_) {
-    force_.x = 0.0f;
-  }
-  if (joy.x < 0.0f && isLeftMove_) {
-    force_.x = 0.0f;
   }
 }
 
