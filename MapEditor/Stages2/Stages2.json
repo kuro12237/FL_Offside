@@ -448,9 +448,9 @@
             "DrawType": "Normal",
             "transform": {
                 "translate": [
-                    -6.0,
+                    -4.0,
                     0.0,
-                    18.0
+                    17.0
                 ],
                 "rotate": [
                     0.0,
