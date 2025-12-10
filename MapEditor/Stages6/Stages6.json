@@ -254,7 +254,7 @@
                     0.0
                 ],
                 "scale": [
-                    20.0,
+                    10.0,
                     1.0,
                     1.0
                 ]
@@ -391,6 +391,170 @@
                     2.0
                 ]
             }
+        },
+        {
+            "type": "MESH",
+            "name": "NormalBlock.005",
+            "file_name": "NormalBlock",
+            "Directory_name": "Resources/Models/Blocks/NormalBlock",
+            "ModelFileType": "obj",
+            "DrawType": "Instancing",
+            "InstancingObjName": "Map",
+            "transform": {
+                "translate": [
+                    10.0,
+                    0.0,
+                    20.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    3.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "collider": {
+                "type": "Box",
+                "center": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "size": [
+                    2.0,
+                    2.0,
+                    2.0
+                ]
+            },
+            "gravity_Flag": false,
+            "terrain_Flag": false
+        },
+        {
+            "type": "MESH",
+            "name": "NormalBlock.006",
+            "file_name": "NormalBlock",
+            "Directory_name": "Resources/Models/Blocks/NormalBlock",
+            "ModelFileType": "obj",
+            "DrawType": "Instancing",
+            "InstancingObjName": "Map",
+            "transform": {
+                "translate": [
+                    9.0,
+                    0.0,
+                    15.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    7.0,
+                    1.0,
+                    1.0
+                ]
+            },
+            "collider": {
+                "type": "Box",
+                "center": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "size": [
+                    2.0,
+                    2.0,
+                    2.0
+                ]
+            },
+            "gravity_Flag": false,
+            "terrain_Flag": false
+        },
+        {
+            "type": "MESH",
+            "name": "NormalBlock.007",
+            "file_name": "NormalBlock",
+            "Directory_name": "Resources/Models/Blocks/NormalBlock",
+            "ModelFileType": "obj",
+            "DrawType": "Instancing",
+            "InstancingObjName": "Map",
+            "transform": {
+                "translate": [
+                    8.0,
+                    0.0,
+                    14.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    6.0
+                ]
+            },
+            "collider": {
+                "type": "Box",
+                "center": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "size": [
+                    2.0,
+                    2.0,
+                    2.0
+                ]
+            },
+            "gravity_Flag": false,
+            "terrain_Flag": false
+        },
+        {
+            "type": "MESH",
+            "name": "NormalBlock.008",
+            "file_name": "NormalBlock",
+            "Directory_name": "Resources/Models/Blocks/NormalBlock",
+            "ModelFileType": "obj",
+            "DrawType": "Instancing",
+            "InstancingObjName": "Map",
+            "transform": {
+                "translate": [
+                    13.0,
+                    0.0,
+                    4.0
+                ],
+                "rotate": [
+                    0.0,
+                    -0.0,
+                    0.0
+                ],
+                "scale": [
+                    1.0,
+                    1.0,
+                    4.0
+                ]
+            },
+            "collider": {
+                "type": "Box",
+                "center": [
+                    0.0,
+                    0.0,
+                    0.0
+                ],
+                "size": [
+                    2.0,
+                    2.0,
+                    2.0
+                ]
+            },
+            "gravity_Flag": false,
+            "terrain_Flag": false
         }
     ]
 }
